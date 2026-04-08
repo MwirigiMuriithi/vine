@@ -1,0 +1,84 @@
+// control_flow.vine : perchance, otherwise, letHimCook, spinTheBlock, ghost
+//
+// perchance   = if
+// otherwise   = else
+// isGiving    = ==  (equality check)
+// letHimCook  = while loop
+// spinTheBlock= for loop
+// ghost       = break
+
+forge main() void {
+
+    // perchance / otherwise 
+    spill("=== grade check ===")
+    lowkey score int = 75
+
+    perchance (score >= 90) {
+        spill("big W, that's an A")
+    } otherwise perchance (score >= 80) {
+        spill("solid B, keep it up")
+    } otherwise perchance (score >= 70) {
+        spill("C  mid, but you passed")
+    } otherwise {
+        spill("Dust, study harder")
+    }
+
+    // isGiving: equality check 
+    spill("=== isGiving (==) demo ===")
+    lowkey mood string = "vibing"
+    perchance (mood isGiving "vibing") {
+        spill("slay")
+    } otherwise {
+        spill("not today")
+    }
+
+    // letHimCook: while loop 
+    spill("=== letHimCook (while) ===")
+    lowkey i int = 1
+    letHimCook (i <= 5) {
+        spill(i)
+        i = i + 1
+    }
+
+    // ghost: break out of loop
+    spill("=== ghost (break) at 3 ===")
+    lowkey j int = 1
+    letHimCook (j <= 10) {
+        perchance (j isGiving 4) {
+            ghost   // stop the loop when j reaches 4
+        }
+        spill(j)
+        j = j + 1
+    }
+
+    // spinTheBlock: for loop 
+    spill("=== spinTheBlock (for) ===")
+    spinTheBlock (lowkey k int = 0; k < 5; k = k + 1) {
+        spill(k)
+    }
+
+    // FizzBuzz
+    spill("=== FizzBuzz (1-20) ===")
+    spinTheBlock (lowkey n int = 1; n <= 20; n = n + 1) {
+        perchance (n % 15 isGiving 0) {
+            spill("FizzBuzz")
+        } otherwise perchance (n % 3 isGiving 0) {
+            spill("Fizz")
+        } otherwise perchance (n % 5 isGiving 0) {
+            spill("Buzz")
+        } otherwise {
+            spill(n)
+        }
+    }
+
+    // checkTheFit: match / switch 
+    spill("=== checkTheFit (match) ===")
+    lowkey day int = 5
+    checkTheFit (day) {
+        style 1: { spill("Monday, ugh") }
+        style 2: { spill("Tuesday, still meh") }
+        style 3: { spill("Wednesday, we're in it") }
+        style 5: { spill("Friday, sherehe!") }
+        noFilter: { spill("just another day fr") }
+    }
+}

@@ -1,0 +1,56 @@
+// variables.vine : lowkey, noCap, and types in Vine
+//
+// lowkey  = mutable variable (can be reassigned)
+// noCap   = immutable constant (locked in, cannot change)
+// lockIn  = same as noCap, your choice of vibe
+
+forge main() void {
+    // lowkey: mutable variables 
+    spill("=== lowkey variables ===")
+    lowkey x int = 10
+    lowkey y int = 3
+    spill(x + y)    // 13
+    spill(x - y)    // 7
+    spill(x * y)    // 30
+    spill(x / y)    // 3
+    spill(x % y)    // 1
+
+    // Mutable means we can change it
+    x = x + 1
+    spill(x)        // 11
+
+    // noCap / lockIn: immutable constants
+    spill("=== noCap constants ===")
+    noCap PI float = 3.14159
+    noCap APP_NAME string = "Vine"
+    lockIn MAX_SCORE int = 100
+
+    spill(PI)           // 3.14159
+    spill(APP_NAME)     // Vine
+    spill(MAX_SCORE)    // 100
+
+    // Trying to reassign a noCap would be a semantic error:
+    //   PI = 3  ERROR: "cannot reassign noCap, it's locked in fr"
+
+    // Float arithmetic
+    spill("=== float math ===")
+    lowkey radius float = 5.0
+    lowkey area float = PI * radius * radius
+    spill(area)   // 78.53975
+
+    // Strings
+    spill("=== strings ===")
+    lowkey vibe string = "main character"
+    lowkey energy string = " energy"
+    spill(vibe + energy)    // "main character energy"
+
+    // Booleans: bet and nah
+    spill("=== bet / nah ===")
+    lowkey valid bool = bet
+    lowkey clapped bool = nah
+    spill(valid)            // true
+    spill(clapped)          // false
+    spill(valid && clapped) // false
+    spill(valid || clapped) // true
+    spill(!valid)           // false
+}

@@ -1,0 +1,117 @@
+// error_handling.vine : throwHands, attempt, catch in Vine
+//
+// Vine uses internet-culture names for error handling:
+//   throwHands("msg")           : throw an error
+//   attempt { }                 : try block
+//   catch errVar { }            : catch block (errVar gets the error message as string)
+
+// safeDivide throws if the divisor is zero.
+forge safeDivide(a int, b int) int {
+    perchance (b isGiving 0) {
+        throwHands("can't divide by zero, dust")
+    }
+    itIsWhatItIs a / b
+}
+
+// safeRoot throws if n is negative (no imaginary numbers here fr).
+forge safeRoot(n float) float {
+    perchance (n < 0.0) {
+        throwHands("can't take root of negative, not in this house")
+    }
+    // Approximate sqrt via Newton's method (since Vine has no stdlib)
+    lowkey guess float = n / 2.0
+    lowkey i int = 0
+    letHimCook (i < 20) {
+        guess = (guess + n / guess) / 2.0
+        i = i + 1
+    }
+    itIsWhatItIs guess
+}
+
+// validateAge throws if the age is out of reasonable range.
+forge validateAge(age int) int {
+    perchance (age < 0) {
+        throwHands("age can't be negative, you're not Benjamin Button")
+    }
+    perchance (age > 150) {
+        throwHands("no one lives that long, ratio")
+    }
+    itIsWhatItIs age
+}
+
+forge main() void {
+
+    // Basic attempt / catch 
+    spill("=== basic attempt / catch ===")
+
+    attempt {
+        lowkey result int = safeDivide(10, 2)
+        spill(result)              // 5, works fine
+    } catch err {
+        spill("caught: " + err)   // not reached
+    }
+
+    attempt {
+        lowkey boom int = safeDivide(10, 0)   // throwHands!
+        spill(boom)                            // not reached
+    } catch err {
+        spill("caught: " + err)
+        // Output: caught: can't divide by zero, dust even in code lol
+    }
+
+    // Nested attempt / catch
+    spill("=== nested error handling ===")
+
+    attempt {
+        // Outer try doesn't throw
+        lowkey a int = safeDivide(20, 4)   // 5
+
+        // Inner try catches its own error
+        attempt {
+            lowkey b int = safeDivide(a, 0)  // throws
+            spill(b)
+        } catch inner {
+            spill("inner caught: " + inner)
+        }
+
+        spill("outer continues fine")
+    } catch outer {
+        spill("outer caught: " + outer)   // not reached
+    }
+
+    // Validate age examples 
+    spill("=== validateAge ===")
+
+    attempt {
+        lowkey age int = validateAge(25)
+        spill(age)   // 25
+    } catch err {
+        spill("error: " + err)
+    }
+
+    attempt {
+        lowkey bad int = validateAge(-5)
+        spill(bad)
+    } catch err {
+        spill("error: " + err)  // you're not Benjamin Button
+    }
+
+    attempt {
+        lowkey weird int = validateAge(200)
+        spill(weird)
+    } catch err {
+        spill("error: " + err)  // ratio
+    }
+
+    // Division by zero at runtime 
+    // The VM itself throws on div-by-zero, which attempt can catch too
+    spill("=== runtime div/zero ===")
+    attempt {
+        lowkey x int = 5 / 0    // VM throws automatically
+        spill(x)
+    } catch err {
+        spill("vm caught: " + err)
+    }
+
+    spill("program continues after all errors were handled")
+}

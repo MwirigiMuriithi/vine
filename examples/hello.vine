@@ -1,0 +1,9 @@
+// hello.vine : The classic first program in Vine
+//
+// Every Vine program needs a 'main' forge (function).
+// 'spill' prints to the screen (like print/console.log).
+
+forge main() void {
+    spill("Hello, World!")
+    spill("Welcome to the Vine Programming language")
+}

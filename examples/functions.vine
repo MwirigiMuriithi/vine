@@ -1,0 +1,114 @@
+// functions.vine : forge (functions) and recursion in Vine
+//
+// forge    = func/function
+// itIsWhatItIs = return
+
+// Simple forges (functions)
+forge add(a int, b int) int {
+    itIsWhatItIs a + b
+}
+
+forge multiply(a int, b int) int {
+    itIsWhatItIs a * b
+}
+
+forge maxOf(a int, b int) int {
+    perchance (a > b) {
+        itIsWhatItIs a
+    } otherwise {
+        itIsWhatItIs b
+    }
+}
+
+forge absVal(n int) int {
+    perchance (n < 0) {
+        itIsWhatItIs -n
+    }
+    itIsWhatItIs n
+}
+
+// Recursive forges 
+// A recursive forge calls itself.
+// Every recursive forge needs:
+//   1. A BASE CASE   : where it stops and returns directly
+//   2. A RECURSIVE CASE : where it calls itself with a smaller problem
+
+// factorial: n! = n × (n-1) × ... × 1
+// e.g.  factorial(5) = 120
+forge factorial(n int) int {
+    perchance (n <= 1) {
+        itIsWhatItIs 1              // base case
+    }
+    itIsWhatItIs n * factorial(n - 1)  // recursive case
+}
+
+// fibonacci: 0, 1, 1, 2, 3, 5, 8, 13, ...
+forge fibonacci(n int) int {
+    perchance (n <= 0) { itIsWhatItIs 0 }
+    perchance (n isGiving 1) { itIsWhatItIs 1 }
+    itIsWhatItIs fibonacci(n - 1) + fibonacci(n - 2)
+}
+
+// power: base^exp
+forge power(base int, exp int) int {
+    perchance (exp isGiving 0) { itIsWhatItIs 1 }
+    itIsWhatItIs base * power(base, exp - 1)
+}
+
+// Iterative fibonacci (spinTheBlock / for loop)
+// Same output as recursive fibonacci but MUCH faster (linear vs exponential)
+forge fibIterative(n int) int {
+    perchance (n <= 0) { itIsWhatItIs 0 }
+    perchance (n isGiving 1) { itIsWhatItIs 1 }
+    lowkey prev int = 0
+    lowkey curr int = 1
+    spinTheBlock (lowkey i int = 2; i <= n; i = i + 1) {
+        lowkey next int = prev + curr
+        prev = curr
+        curr = next
+    }
+    itIsWhatItIs curr
+}
+
+// Void forge : does something but returns nothing 
+forge greet(name string) void {
+    spill("Heyy " + name + " 👋 welcome to Vine!")
+}
+
+// Main
+forge main() void {
+    spill("=== basic forges ===")
+    spill(add(3, 4))          // 7
+    spill(multiply(6, 7))     // 42
+    spill(maxOf(15, 23))      // 23
+    spill(absVal(-42))        // 42
+
+    spill("=== factorials ===")
+    spill(factorial(0))       // 1
+    spill(factorial(5))       // 120
+    spill(factorial(10))      // 3628800
+
+    spill("=== fibonacci (recursive) ===")
+    spinTheBlock (lowkey i int = 0; i <= 10; i = i + 1) {
+        spill(fibonacci(i))
+    }
+
+    spill("=== fibonacci (iterative : no cap faster) ===")
+    spinTheBlock (lowkey j int = 0; j <= 10; j = j + 1) {
+        spill(fibIterative(j))
+    }
+
+    spill("=== powers of 2 ===")
+    spinTheBlock (lowkey k int = 0; k <= 10; k = k + 1) {
+        spill(power(2, k))
+    }
+
+    spill("=== greetings ===")
+    greet("Alice")
+    greet("Bob")
+    greet("Vine Programmer")
+
+    spill("=== composed calls ===")
+    spill(add(factorial(4), power(2, 5)))         // 24 + 32 = 56
+    spill(maxOf(fibonacci(8), factorial(5)))       // max(21,120) = 120
+}

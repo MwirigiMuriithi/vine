@@ -1,0 +1,65 @@
+.
+├── ast
+│   └── ast.go
+├── :clear
+├── codegen
+│   └── codegen.go
+├── eval
+│   └── eval.go
+├── examples
+│   ├── advanced.vine
+│   ├── control_flow.vine
+│   ├── error_handling.vine
+│   ├── functions.vine
+│   ├── hello.vine
+│   ├── sorting.vine
+│   └── variables.vine
+├── go.mod
+├── integration_test.go
+├── LANGUAGE_SPEC.md
+├── lexer
+│   ├── lexer.go
+│   ├── lexer_test.go
+│   └── token.go
+├── main.go
+├── parser
+│   ├── parser.go
+│   └── parser_test.go
+├── project_structure.txt
+├── :quit
+├── README.md
+├── repl
+│   └── repl.go
+├── semantic
+│   ├── analyser.go
+│   └── analyser_test.go
+├── :session
+├── vine
+├── vine-vscode
+│   ├── images
+│   │   ├── vine-file-icon.png
+│   │   └── vine-file-icon.svg
+│   ├── language-configuration.json
+│   ├── out
+│   │   ├── extension.js
+│   │   └── extension.js.map
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── project_structure.txt
+│   ├── README.md
+│   ├── snippets
+│   │   └── vine.json
+│   ├── src
+│   │   └── extension.ts
+│   ├── syntaxes
+│   │   └── vine.tmLanguage.json
+│   ├── themes
+│   │   └── vine-dark.json
+│   ├── tsconfig.json
+│   └── vine-language-1.0.0.vsix
+└── vm
+    ├── opcode.go
+    ├── value.go
+    └── vm.go
+
+17 directories, 46 files

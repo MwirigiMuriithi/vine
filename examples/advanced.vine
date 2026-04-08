@@ -1,0 +1,122 @@
+// Example
+//                 checkTheFit, attempt/catch, throwHands,
+//                 recursive forges, isGiving, letHimCook
+
+noCap MAX_ITER int = 1000  // top-level constants not supported yet, keep inside main, coming soon
+
+// isPrime : returns bet/nah (true/false)
+forge isPrime(n int) bool {
+    perchance (n <= 1) { itIsWhatItIs nah }
+    perchance (n isGiving 2) { itIsWhatItIs bet }
+    lowkey d int = 2
+    letHimCook (d < n) {
+        perchance (n % d isGiving 0) { itIsWhatItIs nah }
+        d = d + 1
+    }
+    itIsWhatItIs bet
+}
+
+// gcd Euclid's algorithm
+forge gcd(a int, b int) int {
+    letHimCook (b != 0) {
+        lowkey temp int = b
+        b = a % b
+        a = temp
+    }
+    itIsWhatItIs a
+}
+
+// safeDivide : uses throwHands / attempt / catch
+forge safeDivide(a int, b int) int {
+    perchance (b isGiving 0) {
+        throwHands("division by zero — that's an L")
+    }
+    itIsWhatItIs a / b
+}
+
+forge isEven(n int) bool { itIsWhatItIs n % 2 isGiving 0 }
+forge minOf(a int, b int) int {
+    perchance (a < b) { itIsWhatItIs a }
+    itIsWhatItIs b
+}
+forge maxOf(a int, b int) int {
+    perchance (a > b) { itIsWhatItIs a }
+    itIsWhatItIs b
+}
+forge clamp(v int, lo int, hi int) int {
+    perchance (v < lo) { itIsWhatItIs lo }
+    perchance (v > hi) { itIsWhatItIs hi }
+    itIsWhatItIs v
+}
+
+forge main() void {
+
+    // Primes 
+    spill("=== primes 2-30 ===")
+    spinTheBlock (lowkey i int = 2; i <= 30; i = i + 1) {
+        perchance (isPrime(i)) {
+            spill(i)
+        }
+    }
+
+    // ghost: stop early
+    spill("=== first prime > 20, then ghost ===")
+    spinTheBlock (lowkey j int = 21; j <= 100; j = j + 1) {
+        perchance (isPrime(j)) {
+            spill(j)
+            ghost   // found it, ghost out of the loop
+        }
+    }
+
+    // checkTheFit (switch) 
+    spill("=== checkTheFit mood check ===")
+    lowkey vibe int = 2
+    checkTheFit (vibe) {
+        style 1: { spill("main character energy") }
+        style 2: { spill("side character arc") }
+        style 3: { spill("villain era") }
+        noFilter: { spill("NPC behaviour detected") }
+    }
+
+    // attempt / catch (try/catch) 
+    spill("=== attempt / catch ===")
+    attempt {
+        lowkey result int = safeDivide(10, 2)
+        spill(result)            // 5, this works fine
+        lowkey boom int = safeDivide(8, 0)   // this throwHands
+        spill(boom)              // never reached
+    } catch err {
+        spill("caught: " + err)  // "caught: division by zero , that's an L"
+    }
+
+    // GCD
+    spill("=== gcd ===")
+    spill(gcd(48, 18))    // 6
+    spill(gcd(100, 75))   // 25
+
+    // Clamp
+    spill("=== clamp to [0,100] ===")
+    spill(clamp(-10, 0, 100))   // 0
+    spill(clamp(50, 0, 100))    // 50
+    spill(clamp(200, 0, 100))   // 100
+
+    // Min / Max
+    spill("=== min / max ===")
+    spill(minOf(7, 3))    // 3
+    spill(maxOf(7, 3))    // 7
+
+    // Collatz
+    spill("=== Collatz sequence from 27 ===")
+    lowkey cn int = 27
+    lowkey steps int = 0
+    letHimCook (cn != 1) {
+        perchance (isEven(cn)) {
+            cn = cn / 2
+        } otherwise {
+            cn = cn * 3 + 1
+        }
+        steps = steps + 1
+    }
+    spill("steps to reach 1:")
+    spill(steps)   // 111
+}

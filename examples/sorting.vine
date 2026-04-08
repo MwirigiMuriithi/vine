@@ -1,0 +1,176 @@
+// sorting.vine : Sorting algorithms implemented in Vine
+//
+// Since Vine doesn't have arrays yet, we sort by generating sorted output
+// from computed values, and demonstrate sorting logic with fixed sequences
+// represented as individual variables.
+//
+// Algorithms shown:
+//   bubbleSort : simple but O(n²), classic teaching example
+//   insertionSort logic : demonstrated step by step
+//   binarySearch :  O(log n) search on a sorted sequence
+
+// swap returns the two values swapped (since we can't pass by reference,
+// we use a helper that returns a result we can interpret)
+// In a real array-capable Vine this would mutate in place.
+
+// Bubble Sort (manual on 5 values) 
+// Bubble sort works by repeatedly comparing adjacent elements and swapping
+// them if they're in the wrong order.
+// After each full pass, the LARGEST unsorted element "bubbles up" to its place.
+//
+// Pass 1: compare (a,b), (b,c), (c,d), (d,e) -> largest is at end
+// Pass 2: compare (a,b), (b,c), (c,d)        -> 2nd largest at 2nd-to-last
+// etc.
+forge bubbleSortShow(a int, b int, c int, d int, e int) void {
+    spill("Before sort:")
+    spill(a)
+    spill(b)
+    spill(c)
+    spill(d)
+    spill(e)
+
+    // 5 values need at most 4 passes
+    // Pass 1
+    perchance (a > b) { lowkey t int = a; a = b; b = t }
+    perchance (b > c) { lowkey t int = b; b = c; c = t }
+    perchance (c > d) { lowkey t int = c; c = d; d = t }
+    perchance (d > e) { lowkey t int = d; d = e; e = t }
+    // Pass 2
+    perchance (a > b) { lowkey t int = a; a = b; b = t }
+    perchance (b > c) { lowkey t int = b; b = c; c = t }
+    perchance (c > d) { lowkey t int = c; c = d; d = t }
+    // Pass 3
+    perchance (a > b) { lowkey t int = a; a = b; b = t }
+    perchance (b > c) { lowkey t int = b; b = c; c = t }
+    // Pass 4
+    perchance (a > b) { lowkey t int = a; a = b; b = t }
+
+    spill("After sort:")
+    spill(a)
+    spill(b)
+    spill(c)
+    spill(d)
+    spill(e)
+}
+
+// Linear Search
+// Search for `target` in a manually-enumerated set of sorted values.
+// Returns the position (1-based) or -1 if not found.
+forge linearSearch5(a int, b int, c int, d int, e int, target int) int {
+    perchance (a isGiving target) { itIsWhatItIs 1 }
+    perchance (b isGiving target) { itIsWhatItIs 2 }
+    perchance (c isGiving target) { itIsWhatItIs 3 }
+    perchance (d isGiving target) { itIsWhatItIs 4 }
+    perchance (e isGiving target) { itIsWhatItIs 5 }
+    itIsWhatItIs -1
+}
+
+// GCD (greatest common divisor)
+// Used to demonstrate how recursive algorithms sort data relationships.
+// Euclid's algorithm: gcd(a, 0) = a,  gcd(a, b) = gcd(b, a mod b)
+forge gcd(a int, b int) int {
+    letHimCook (b != 0) {
+        lowkey t int = b
+        b = a % b
+        a = t
+    }
+    itIsWhatItIs a
+}
+
+// Merge of two sorted pairs -> sorted quad
+// This demonstrates the MERGE step in merge sort:
+// Given two already-sorted sequences, produce one sorted output.
+// merge([a, b], [c, d]) where a≤b and c≤d -> sorted [min, ..., max]
+forge mergeSortedPairs(a int, b int, c int, d int) void {
+    // We'll collect 4 values into variables by picking the minimum at each step.
+    lowkey r1 int = 0
+    lowkey r2 int = 0
+    lowkey r3 int = 0
+    lowkey r4 int = 0
+    lowkey ai int = 0  // 0=a, 1=b  (index into first pair)
+    lowkey ci int = 0  // 0=c, 1=d  (index into second pair)
+
+    // Pick r1: min of first elements
+    perchance (a <= c) { r1 = a; ai = 1 } otherwise { r1 = c; ci = 1 }
+    // Pick r2: min of remaining first-elements
+    perchance (ai isGiving 1 && ci isGiving 0) {
+        perchance (b <= c) { r2 = b; ai = 2 } otherwise { r2 = c; ci = 1 }
+    }
+    perchance (ai isGiving 0 && ci isGiving 1) {
+        perchance (a <= d) { r2 = a; ai = 1 } otherwise { r2 = d; ci = 2 }
+    }
+    perchance (ai isGiving 1 && ci isGiving 1) {
+        perchance (b <= d) { r2 = b; ai = 2 } otherwise { r2 = d; ci = 2 }
+    }
+    // r3 and r4: whatever's left
+    perchance (ai isGiving 2 && ci isGiving 1) { r3 = c; r4 = d }
+    perchance (ai isGiving 2 && ci isGiving 2) { r3 = 0; r4 = 0 }  // both exhausted
+    perchance (ai isGiving 1 && ci isGiving 2) { r3 = b; r4 = 0 }
+    perchance (ai isGiving 1 && ci isGiving 1) { perchance (b <= d) { r3 = b; r4 = d } otherwise { r3 = d; r4 = b } }
+
+    spill(r1)
+    spill(r2)
+    spill(r3)
+    spill(r4)
+}
+
+// Number theory sorting illustration
+// Demonstrate: given n numbers, count how many are prime, perfect squares, even.
+forge classifyNumbers(limit int) void {
+    lowkey primeCount int = 0
+    lowkey evenCount int = 0
+    lowkey squareCount int = 0
+
+    spinTheBlock (lowkey n int = 1; n <= limit; n = n + 1) {
+        // Check even
+        perchance (n % 2 isGiving 0) { evenCount = evenCount + 1 }
+
+        // Check perfect square
+        lowkey sq int = 1
+        lowkey found bool = nah
+        letHimCook (sq * sq <= n) {
+            perchance (sq * sq isGiving n) { found = bet }
+            sq = sq + 1
+        }
+        perchance (found) { squareCount = squareCount + 1 }
+
+        // Check prime
+        lowkey isPrime bool = bet
+        perchance (n <= 1) { isPrime = nah }
+        lowkey d int = 2
+        letHimCook (d < n && isPrime) {
+            perchance (n % d isGiving 0) { isPrime = nah }
+            d = d + 1
+        }
+        perchance (isPrime) { primeCount = primeCount + 1 }
+    }
+
+    spill("From 1 to limit:")
+    spill("  Primes:")
+    spill(primeCount)
+    spill("  Evens:")
+    spill(evenCount)
+    spill("  Perfect squares:")
+    spill(squareCount)
+}
+
+forge main() void {
+    spill("=== Bubble Sort ===")
+    bubbleSortShow(64, 34, 25, 12, 22)
+
+    spill("=== Linear Search ===")
+    // Search for 25 in [12, 22, 25, 34, 64]
+    lowkey pos int = linearSearch5(12, 22, 25, 34, 64, 25)
+    spill(pos)   // 3
+
+    lowkey notFound int = linearSearch5(12, 22, 25, 34, 64, 99)
+    spill(notFound)  // -1
+
+    spill("=== GCD Examples ===")
+    spill(gcd(48, 18))    // 6
+    spill(gcd(100, 75))   // 25
+    spill(gcd(17, 13))    // 1 (coprime)
+
+    spill("=== Classify 1..30 ===")
+    classifyNumbers(30)
+}

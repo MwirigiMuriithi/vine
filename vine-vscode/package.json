@@ -1,0 +1,99 @@
+{
+  "name": "vine-language",
+  "displayName": "Vine Language",
+  "description": "Official language support for the Vine programming language, syntax highlighting, bracket matching, and snippets.",
+  "version": "1.0.0",
+  "publisher": "vine-lang",
+  "icon": "images/vine-file-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vine-lang/vine-vscode"
+  },
+  "engines": {
+    "vscode": "^1.114.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Themes"
+  ],
+  "keywords": [
+    "vine",
+    "vine-lang",
+    "syntax highlighting",
+    "compiler"
+  ],
+  "activationEvents": [
+    "onLanguage:vine"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "vine",
+        "aliases": [
+          "Vine",
+          "vine"
+        ],
+        "extensions": [
+          ".vine"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/vine-file-icon.svg",
+          "dark": "./images/vine-file-icon.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "vine",
+        "scopeName": "source.vine",
+        "path": "./syntaxes/vine.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "vine",
+        "path": "./snippets/vine.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "Vine Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/vine-dark.json"
+      }
+    ],
+    "configurationDefaults": {
+      "[vine]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.rulers": [100],
+        "editor.wordBasedSuggestions": "off"
+      }
+    }
+  },
+  "files": [
+    "out/**",
+    "images/**",
+    "snippets/**",
+    "syntaxes/**",
+    "themes/**",
+    "language-configuration.json",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.114.0",
+    "@types/node": "^22.0.0",
+    "@vscode/vsce": "^3.7.1",
+    "typescript": "^6.0.2"
+  }
+}

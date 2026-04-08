@@ -1,0 +1,298 @@
+{
+  "name": "Vine Dark",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#0f1117",
+    "editor.foreground": "#e2e8f0",
+    "editor.lineHighlightBackground": "#1a1f2e",
+    "editor.selectionBackground": "#2d4a7a55",
+    "editor.inactiveSelectionBackground": "#2d4a7a33",
+    "editorLineNumber.foreground": "#3d4a5c",
+    "editorLineNumber.activeForeground": "#7c9cbf",
+    "editorCursor.foreground": "#4ade80",
+    "editorWhitespace.foreground": "#2a3040",
+    "editorIndentGuide.background": "#1e2535",
+    "editorIndentGuide.activeBackground": "#2d3a50",
+    "editor.wordHighlightBackground": "#2d4a7a44",
+    "editor.wordHighlightStrongBackground": "#2d4a7a66",
+    "editorBracketMatch.background": "#4ade8022",
+    "editorBracketMatch.border": "#4ade80",
+    "activityBar.background": "#0a0d14",
+    "activityBar.foreground": "#7c9cbf",
+    "activityBar.activeBorder": "#4ade80",
+    "sideBar.background": "#0d111a",
+    "sideBar.foreground": "#a0aec0",
+    "sideBarSectionHeader.background": "#111827",
+    "statusBar.background": "#0a0d14",
+    "statusBar.foreground": "#4ade80",
+    "statusBarItem.hoverBackground": "#1a2535",
+    "titleBar.activeBackground": "#0a0d14",
+    "titleBar.activeForeground": "#e2e8f0",
+    "tab.activeBackground": "#0f1117",
+    "tab.activeForeground": "#4ade80",
+    "tab.inactiveBackground": "#0a0d14",
+    "tab.inactiveForeground": "#4a5568",
+    "tab.activeBorderTop": "#4ade80",
+    "terminal.background": "#0f1117",
+    "terminal.foreground": "#e2e8f0",
+    "terminal.ansiGreen": "#4ade80",
+    "terminal.ansiBlue": "#60a5fa",
+    "terminal.ansiYellow": "#fbbf24",
+    "terminal.ansiRed": "#f87171",
+    "terminal.ansiMagenta": "#c084fc"
+  },
+  "tokenColors": [
+    {
+      "name": "Comments",
+      "scope": "comment",
+      "settings": {
+        "foreground": "#3d5a4a",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Strings",
+      "scope": "string.quoted.double.vine",
+      "settings": {
+        "foreground": "#86efac"
+      }
+    },
+    {
+      "name": "String Escapes",
+      "scope": "constant.character.escape.vine",
+      "settings": {
+        "foreground": "#4ade80"
+      }
+    },
+    {
+      "name": "Numbers — integers",
+      "scope": "constant.numeric.integer.vine",
+      "settings": {
+        "foreground": "#93c5fd"
+      }
+    },
+    {
+      "name": "Numbers — floats",
+      "scope": "constant.numeric.float.vine",
+      "settings": {
+        "foreground": "#7dd3fc"
+      }
+    },
+    {
+      "name": "Boolean bet/nah",
+      "scope": [
+        "constant.language.boolean.true.vine",
+        "constant.language.boolean.false.vine"
+      ],
+      "settings": {
+        "foreground": "#34d399",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Null — ghosted",
+      "scope": "constant.language.null.vine",
+      "settings": {
+        "foreground": "#64748b",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "forge keyword",
+      "scope": "keyword.declaration.function.vine",
+      "settings": {
+        "foreground": "#c084fc",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Function name (declaration)",
+      "scope": "entity.name.function.vine",
+      "settings": {
+        "foreground": "#f0abfc"
+      }
+    },
+    {
+      "name": "Function call",
+      "scope": "entity.name.function.call.vine",
+      "settings": {
+        "foreground": "#d8b4fe"
+      }
+    },
+    {
+      "name": "lowkey — mutable var",
+      "scope": "keyword.declaration.variable.mutable.vine",
+      "settings": {
+        "foreground": "#fbbf24",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "noCap / lockIn — immutable",
+      "scope": "keyword.declaration.variable.immutable.vine",
+      "settings": {
+        "foreground": "#fb923c",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "itIsWhatItIs — return",
+      "scope": "keyword.control.return.vine",
+      "settings": {
+        "foreground": "#f472b6",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "perchance — if",
+      "scope": "keyword.control.conditional.vine",
+      "settings": {
+        "foreground": "#60a5fa"
+      }
+    },
+    {
+      "name": "otherwise — else",
+      "scope": "keyword.control.conditional.else.vine",
+      "settings": {
+        "foreground": "#60a5fa",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "checkTheFit — switch",
+      "scope": "keyword.control.switch.vine",
+      "settings": {
+        "foreground": "#38bdf8",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "style — case",
+      "scope": "keyword.control.case.vine",
+      "settings": {
+        "foreground": "#7dd3fc"
+      }
+    },
+    {
+      "name": "noFilter — default",
+      "scope": "keyword.control.default.vine",
+      "settings": {
+        "foreground": "#7dd3fc",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "letHimCook — while",
+      "scope": "keyword.control.loop.while.vine",
+      "settings": {
+        "foreground": "#4ade80",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "spinTheBlock — for",
+      "scope": "keyword.control.loop.for.vine",
+      "settings": {
+        "foreground": "#4ade80",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "ghost — break",
+      "scope": "keyword.control.loop.break.vine",
+      "settings": {
+        "foreground": "#94a3b8",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "keepItMoving — continue",
+      "scope": "keyword.control.loop.continue.vine",
+      "settings": {
+        "foreground": "#94a3b8",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "attempt — try",
+      "scope": "keyword.control.trycatch.try.vine",
+      "settings": {
+        "foreground": "#fbbf24"
+      }
+    },
+    {
+      "name": "catch",
+      "scope": "keyword.control.trycatch.catch.vine",
+      "settings": {
+        "foreground": "#fbbf24"
+      }
+    },
+    {
+      "name": "throwHands — throw",
+      "scope": "keyword.control.throw.vine",
+      "settings": {
+        "foreground": "#f87171",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "spill — builtin print",
+      "scope": "support.function.builtin.vine",
+      "settings": {
+        "foreground": "#34d399",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "isGiving — == operator",
+      "scope": "keyword.operator.equality.vine",
+      "settings": {
+        "foreground": "#a78bfa",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Comparison operators",
+      "scope": "keyword.operator.comparison.vine",
+      "settings": {
+        "foreground": "#a78bfa"
+      }
+    },
+    {
+      "name": "Logical operators",
+      "scope": "keyword.operator.logical.vine",
+      "settings": {
+        "foreground": "#818cf8"
+      }
+    },
+    {
+      "name": "Arithmetic operators",
+      "scope": "keyword.operator.arithmetic.vine",
+      "settings": {
+        "foreground": "#94a3b8"
+      }
+    },
+    {
+      "name": "Assignment",
+      "scope": "keyword.operator.assignment.vine",
+      "settings": {
+        "foreground": "#cbd5e1"
+      }
+    },
+    {
+      "name": "Types",
+      "scope": "storage.type.vine",
+      "settings": {
+        "foreground": "#67e8f9",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Variables",
+      "scope": "variable.other.vine",
+      "settings": {
+        "foreground": "#e2e8f0"
+      }
+    }
+  ]
+}

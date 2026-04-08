@@ -67,10 +67,10 @@ code --install-extension vine-language-1.0.0.vsix
 
 ### From source
 ```bash
-git clone https://github.com/vine-lang/vine-vscode
+git clone https://github.com/MwirigiMuriithi/vine/
 cd vine-vscode
-npm install
-npm run package        # produces vine-language-1.0.0.vsix
+pnpm install
+pnpm vsce package # produces vine-language-1.0.0.vsix
 code --install-extension vine-language-1.0.0.vsix
 ```
 
@@ -110,7 +110,7 @@ isGiving                  // == (equality)
 
 ## Contributing
 
-Issues and PRs welcome at [github.com/vine-lang/vine-vscode](https://github.com/vine-lang/vine-vscode).
+Issues and PRs welcome at [https://github.com/MwirigiMuriithi/vine](https://github.com/MwirigiMuriithi/vine).
 
 ---
 

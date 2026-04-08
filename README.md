@@ -144,3 +144,103 @@ vine/
 | Code Generation | `codegen/` | Tree-Walk, Backpatching, Loop Context Stack |
 | Execution | `vm/` | Stack Machine, Call Frames, Try Stack |
 
+## Contributing
+
+Contributions are welcome.
+
+If you want to help improve Vine, please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes with clear commits
+4. Add or update tests where relevant
+5. Run the project and make sure it still works
+6. Open a pull request with a clear description of what changed
+
+
+
+---
+
+## Areas for Contribution
+
+### Suggested areas to contribute
+- Lexer, parser, semantic analysis, and code generation improvements
+- New language features and keyword support
+- Better error messages and diagnostics
+- More example `.vine` programs
+- Documentation and compiler-construction explanations
+- VS Code extension improvements
+
+### Language Features
+- Arrays / slices
+- Structs or user-defined types
+- Pattern matching improvements (`checkTheFit`)
+- String interpolation
+- Standard library functions
+
+### Compiler Improvements
+- Better error recovery in the parser
+- Type inference (partial or full)
+- Constant folding / simple optimizations
+- Dead code elimination
+- Improved symbol table design
+
+### Runtime / VM
+- Performance improvements
+- Debugging support (step execution, stack inspection)
+- Better error stack traces
+- Memory management enhancements
+
+### Testing
+- More unit tests across all phases
+- Edge-case programs
+- Invalid syntax / error-case tests
+
+### Documentation
+- Expand `LANGUAGE_SPEC.md`
+- introduce doc folder
+- Add “how the compiler works” walkthroughs
+- Inline comments explaining algorithms and design decisions
+
+### VS Code Extension
+- Semantic highlighting
+- Diagnostics (error reporting from compiler)
+- Code completion / IntelliSense
+- Formatting support
+
+## Project Structure Contributions
+Improvements to the project structure are welcome.
+
+If you believe the current layout can be improved (better separation of concerns, clearer module boundaries, or cleaner architecture), feel free to propose changes.
+
+Guidelines:
+- Keep the compiler pipeline clear *(lexer → parser → semantic → codegen → VM)*
+- Avoid unnecessary complexity or over-engineering
+- Ensure changes improve readability and maintainability
+- Explain the reasoning behind structural changes in your PR
+
+Refactors that make the project easier to understand, extend, or teach from are highly encouraged.
+---
+
+## Pull Request Expectations
+
+- Keep PRs **small and focused**
+- Include a clear description of:
+  - what you changed
+  - why you changed it
+- Link related issues if applicable
+- Ensure the project builds and runs
+
+---
+
+## Philosophy
+
+Vine is:
+- a **teaching tool** for compiler construction
+- a **playground** for language design
+- a **fun experiment** using internet-culture syntax
+
+Contributions should balance **correctness**, **clarity**, and **fun**.
+<br>
+
+*Vine Programming Language and Compiler v0.1.0*

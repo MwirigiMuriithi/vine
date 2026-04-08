@@ -1,5 +1,5 @@
 # The Vine Programming Language Specification
-## Version 1.0
+## Version 0.1.0
 
 ---
 
@@ -451,4 +451,5 @@ Source Code
 
 ---
 
-*Vine Language Specification v1.0*
+
+*Vine Language Specification v0.1.0*

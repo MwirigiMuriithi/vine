@@ -7,7 +7,7 @@
   "icon": "images/vine-file-icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vine-lang/vine-vscode"
+    "url": "https://github.com/MwirigiMuriithi/vine/vine-vscode"
   },
   "engines": {
     "vscode": "^1.114.0"
